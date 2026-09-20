@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#123b58"><meta name="description" content="元素のモル比と基準質量から、各元素の秤量質量を計算します。">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="秤量計算">
+<title>秤量計算</title><link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icons/apple-touch-icon.png"><link rel="icon" href="./icons/icon-192.png"><link rel="stylesheet" href="./style.css">
+<script type="module" src="./app.js"></script>
+</head>
+<body><main>
+<header><span class="eyebrow">WEIGHTING</span><h1>秤量計算</h1><p>モル比から、元素ごとの質量を求める。</p></header>
+<section aria-labelledby="reference-heading"><h2 id="reference-heading"><span>01</span> 基準にする元素と質量</h2><div class="reference-fields"><label>基準元素<select id="reference"></select></label><label>質量 (g)<input id="fixed-mass" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="1.00000" aria-describedby="error"></label></div></section>
+<section aria-labelledby="components-heading"><h2 id="components-heading"><span>02</span> 元素とモル比</h2><div id="rows"></div><button id="add" class="secondary">＋ 行を追加</button></section>
+<p id="error" class="error" role="status" hidden></p>
+<section class="total-panel" aria-label="合計質量"><span>合計質量</span><output id="total" aria-live="polite">—</output></section>
+<p class="note">質量は g、小数点以下5桁で表示します。</p>
+<details><summary>計算について・使い方</summary><p>各元素の質量 = 基準質量 × (モル比 ÷ 基準のモル比) × (原子量 ÷ 基準の原子量)。元素ボタンを押すと周期表から選択できます。</p><p>原子量は元のXcode版の値を使用しています。標準原子量のない元素には代表的な質量数を使用しています。純度・同位体組成・酸化物などの原料補正は含みません。</p><p>入力はこの端末に保存されます。Safariの共有メニューから「ホーム画面に追加」するとアプリとして開けます。</p></details>
+<footer><p id="offline-status" role="status">オフライン利用を準備しています…</p><p id="storage-status" role="status"></p><button id="update" class="secondary" hidden>新しい版に更新</button><span class="version">v1.0.0</span></footer>
+<noscript><p class="error">計算にはJavaScriptを有効にしてください。</p></noscript>
+</main>
+<dialog id="picker" aria-labelledby="picker-heading"><div class="dialog-header"><h2 id="picker-heading">元素を選択</h2><button id="close-picker" class="secondary">閉じる</button></div><p class="note">周期表は左右にスクロールできます。</p><div class="periodic-scroll" tabindex="0" aria-label="周期表"><div id="periodic-table"></div></div></dialog>
+</body></html>
